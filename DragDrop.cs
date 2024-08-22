@@ -12,8 +12,12 @@ public class DragDrop : NetworkBehaviour
     private bool isDraggable = true;
     private GameObject startParent;
     private Vector2 startPosition;
+
     private GameObject dropZone;
     private bool isOverDropZone;
+
+    private GameObject playerArea;
+    private bool isOverPlayerArea;
 
     // Start is called before the first frame update
     void Start()
@@ -36,7 +40,34 @@ public class DragDrop : NetworkBehaviour
     {
         isOverDropZone = false;
         dropZone = null;
+        // add a collider to the playerarea
+        // check which collider is being collided with using
+        // if(other.gameObject.name.Equals("Bird1"))
+        // or 
+        // other.gameObject.CompareTag("Bird");
+        // https://stackoverflow.com/questions/71927904/how-to-detect-which-gameobject-is-being-collided-with
     }
+
+
+    // // might have to checkmark "is trigger" in DropZone's "box collider" for this to work?
+    // private void OnTriggerEnter(Collider other)
+    // {
+    //     Debug.Log("Entered collision with " + other.gameObject.name);
+    //     isOverDropZone = true;
+    //     dropZone = other.gameObject;
+    // }
+
+    // private void OnTriggerStay(Collider other)
+    // {
+    //     Debug.Log("Colliding with " + other.gameObject.name);
+    // }
+
+    // private void OnTriggerExit(Collider other)
+    // {
+    //     Debug.Log("Exited collision with " + other.gameObject.name);
+    //     isOverDropZone = false;
+    //     dropZone = null;
+    // }
 
     public void BeginDrag()
     {
